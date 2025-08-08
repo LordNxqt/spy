@@ -1,4 +1,3 @@
-
 if game.CoreGui:FindFirstChild("RemoteSpy") then
     game.CoreGui["RemoteSpy"]:Destroy()
 end
@@ -101,7 +100,7 @@ Title.Size = UDim2.new(0, 200, 0, 20)
 Title.ZIndex = 3
 Title.Font = Enum.Font.SourceSansBold
 Title.FontSize = Enum.FontSize.Size14
-Title.Text = "R2S (KN)"
+Title.Text = "ZerioSpy (R2S)"
 Title.TextColor3 = Color3.new(1, 1, 1)
 Title.TextSize = 14
 
@@ -1152,42 +1151,3 @@ local on_namecall = function(object, ...)
 end
 
 game_meta.__namecall = on_namecall
-
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-
-if not playerGui:FindFirstChild("RemoteSpy") then
-	RemoteSpy.Parent = playerGui
-end
-
-local toggleButton = Instance.new("TextButton")
-toggleButton.Name = "SpyToggleButton"
-toggleButton.Text = "Open"
-toggleButton.Size = UDim2.new(0, 100, 0, 40)
-toggleButton.Position = UDim2.new(1, -110, 1, -60)
-toggleButton.AnchorPoint = Vector2.new(0, 0)
-toggleButton.BackgroundColor3 = Color3.fromRGB(40, 0, 80)
-toggleButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-toggleButton.Font = Enum.Font.Code
-toggleButton.TextSize = 18
-toggleButton.AutoButtonColor = true
-toggleButton.BorderSizePixel = 0
-toggleButton.ZIndex = 9999
-toggleButton.Parent = playerGui
-
-local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 10)
-corner.Parent = toggleButton
-
-RemoteSpy.Enabled = false
-
-toggleButton.MouseButton1Click:Connect(function()
-	if RemoteSpy.Enabled then
-		RemoteSpy.Enabled = false
-		toggleButton.Text = "Open"
-	else
-		RemoteSpy.Enabled = true
-		toggleButton.Text = "Close"
-	end
-end)
